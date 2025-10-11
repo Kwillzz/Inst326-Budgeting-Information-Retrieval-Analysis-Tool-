@@ -1,6 +1,6 @@
 #####Function Library here###
 #Kurt Wills
-#What month's budget are you trying to input?
+#What month's budget are you trying to input? For logging purposes
 def what_month():
     while True:
         try:
@@ -12,6 +12,36 @@ def what_month():
                 print("Invalid month. Please enter a number between 1 and 12.")
         except ValueError:
             print("Invalid input. Please enter a number.")
+#Year input for logging purposes. Should be run alongside month inside of one "session" or in a way that keeps months and years together.
+def what_year():
+    while True:
+        try:
+            year = int(input("What year is it? Format in YYYY format \n"))
+            if len(str(year)) !=4:
+                print("Invalid year. Please enter a 4-digit year.")
+            else:
+                print("Valid year.")
+                break
+        except ValueError:
+            print ("Invalid input. Please enter a number.")
+
+#Categorizing purchases
+def purchase_category():
+    categories = {1:"Utilities", 2: "Rent", 3:"Leisure"}
+    while True:
+        try:
+            print("Please select a purchase category by entering the corresponding number:")
+            for key, value in categories.items():
+                print(f"{key}: {value}")
+            choice = int(input("Enter category number: "))
+            if choice in categories:
+                print(f"You selected: {categories[choice]}")
+                break
+            else:
+                print("Invalid category number. Please try again.")
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+
 
 #Ask for state that  the user lives in to deduct state taxes and log monthly budget.
 states = ["Alabama", "Alaska", "Arizona" "Arkansas", "California", "Colorado",
@@ -29,7 +59,7 @@ def what_state():
         print ("Invalid state. ")
     else:
         print ("Valid state.")
-#Ask for state that the user lives in to deduct federal taxes
+###############
 
 #Assign User ID
 
