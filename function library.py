@@ -63,7 +63,7 @@ def what_state():
 
 #Assign User ID
 
-#User input monthly income
+#User input monthly income Dylan Kim
 income = input("Please enter your income for this month: ")
 income = float(income)
 #User input monthly spending
@@ -73,8 +73,17 @@ spending = float(spending)
 with open("budget.txt", "a") as file:
   file.write(f"Income: {income}, Spending: {spending}\n")
 
-
 #Categorize spendings into different groups (Ex. Food, Rent, entertainment)
+print("\nEnter your spending for the following categories:")
+categories = ["Rent & Utilities", "Groceries", "Transportation", "Entertainment", "Other"]
+spending_by_category = {}
+
+for category in categories:
+    amount = float(input(f"How much did you spend on {category}? $"))
+    spending_by_category[category] = amount
+
+total_category_spending = sum(spending_by_category.values())
+print(f"\n You have spent a total of ${total_category_spending:.2f} this month.")
 
 
 
