@@ -176,3 +176,28 @@ description = input("Enter a short description: ")
 month = input("Enter the month: ")
 track_monthly_spending(amount, category, description, month)
 print("Spending record added")
+
+#gets most frequent transation category
+from collections import Counter
+def get_most_frequent_transaction_category():
+    categories = []
+    try:
+        with open("monthly_spending.txt", "r") as file:
+            for line in file:
+                parts = line.strip().split(",", 3)
+                if len(parts) >= 3:
+                    categories.append(parts[2])  
+    except FileNotFoundError:
+        return None
+    if not categories:
+        return None
+    counter = Counter(categories)
+    most_common = counter.most_common(1)
+    return most_common[0][0] if most_common else None
+    
+most_frequent = get_most_frequent_transaction_category()
+if most_frequent:
+    print(f"Most frequent transaction category: {most_frequent}")
+else:
+    print("No transactions found.")
+
