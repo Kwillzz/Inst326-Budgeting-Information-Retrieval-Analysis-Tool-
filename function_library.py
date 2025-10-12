@@ -26,6 +26,7 @@ month = input("Enter the month: ")
 track_monthly_spending(amount, category, description, month)
 print("Spending record added")
 
+#Retrieves most frequent transaction category
 from collections import Counter
 def get_most_frequent_transaction_category():
     categories = []
