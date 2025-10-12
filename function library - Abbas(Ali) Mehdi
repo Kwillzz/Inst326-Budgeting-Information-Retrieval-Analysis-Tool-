@@ -1,1 +1,15 @@
+def validate_percentage(value):
+  #Make sure the value is a number
+if type(value) != int and type(value) != float:
+  print("Error: value must be a number.")
+  return None
+
+#Convert percentage to decimal
+if value > 1 and value <= 100:
+  value = value/100
+  print("Error: percentage  must be between 0 & 100")
+  return None
+return round(value, 2)
+
+def edit_expense(expense_records
 
