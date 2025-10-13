@@ -1,5 +1,5 @@
 # Inst326-Budgeting-Information-Retrieval-Analysis-Tool 
-Spending&Budgeting Information Retrieval & Analysis Tool 
+
 
 Members: Abbas Mehdi, Connor Lehfeldt, Kurt Wills
 Each member is expected to contribute to everything equally
