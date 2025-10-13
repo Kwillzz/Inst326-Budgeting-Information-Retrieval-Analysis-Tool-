@@ -81,8 +81,6 @@ total_category_spending = sum(spending_by_category.values())
 print(f"\n You have spent a total of ${total_category_spending:.2f} this month.")
 
 
-
-#Arrange month and year ---3
 #What month's budget are you trying to input? For logging purposes
 def what_month():
     while True:
@@ -95,7 +93,9 @@ def what_month():
                 print("Invalid month. Please enter a number between 1 and 12.")
         except ValueError:
             print("Invalid input. Please enter a number.")
-#Year input for logging purposes. Should be run alongside month inside of one "session" or in a way that keeps months and years together.
+#Year input for logging purposes. 
+#A json file should be opened up for every new year logged, and the month should be used for each new row. 
+#It would likely be good to put most information into a json and then maybe put it into a table for overall spending in each category
 def what_year():
     while True:
         try:
@@ -108,7 +108,7 @@ def what_year():
         except ValueError:
             print ("Invalid input. Please enter a number.")
 
-#Categorizing purchases(#2)
+#Categorizing purchases
 def purchase_category():
     categories = {1:"Utilities", 2: "Rent", 3:"Leisure"}
     while True:
@@ -126,8 +126,6 @@ def purchase_category():
             print("Invalid input. Please enter a number.")
 
 
-
-#Input state to determine state taxes---4
 #Ask for state that  the user lives in to deduct state taxes and log monthly budget.
 states = ["Alabama", "Alaska", "Arizona" "Arkansas", "California", "Colorado",
 "Connecticut", "Delaware", "Florida","Georgia", "Hawaii", "Idaho","Illinois","Indiana",
@@ -142,6 +140,7 @@ def what_state():
     #
     if state not in states:
         print ("Invalid state. ")
+    #then push it to the text file
     else:
         print ("Valid state.")
 
