@@ -18,6 +18,10 @@ def edit_expense(expense_records):
     expense_records 
 return expense_records
 
+#Basic function of gathering transaction history
+def transaction_list(wallet)
+  wallet = list[]
+return wallet
 
 
 
