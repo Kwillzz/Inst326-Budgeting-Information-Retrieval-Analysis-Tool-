@@ -57,16 +57,24 @@ def get_numeric_input(prompt):
             print("Invalid input. Please enter a valid number.")
 
 
+#Creating a json file. use this after calling the year function and store the year 
+#in a variable so this works
+import json
+import os
 
-#User input monthly income---2
-income = input("Please enter your income for this month: ")
-income = float(income)
-#User input monthly spending
-spending = input("Please enter your spending for this month: ")
-spending = float(spending)
-#How will the data be stored/saved?
-with open("budget.txt", "a") as file:
-  file.write(f"Income: {income}, Spending: {spending}\n")
+def create_file():
+  file_name = f"budget_{year}.json"
+
+  if not os.path.exists(file_name):
+    data = {
+            "year": year,
+            "records": [] 
+        }
+    with open(file_name, "w") as f:
+      json.dump(data, f)
+  else:
+      print(f"File already exists: {file_name}")
+  return file_name
 
 #Categorize spendings into different groups (Ex. Food, Rent, entertainment)
 print("\nEnter your spending for the following categories:")
@@ -94,23 +102,21 @@ def what_month():
         except ValueError:
             print("Invalid input. Please enter a number.")
 #Year input for logging purposes. 
-#A json file should be opened up for every new year logged, and the month should be used for each new row. 
+#A json file could be opened up for every new year logged, and the month should be used for each new row. 
 #It would likely be good to put most information into a json and then maybe put it into a table for overall spending in each category
 def what_year():
     while True:
-        try:
-            year = int(input("What year is it? Format in YYYY format \n"))
-            if len(str(year)) !=4:
-                print("Invalid year. Please enter a 4-digit year.")
-            else:
-                print("Valid year.")
-                break
-        except ValueError:
-            print ("Invalid input. Please enter a number.")
+        year_str = input("What year is it? Format in YYYY format. \n")
+        if year_str.isdigit() and len(year_str) == 4:
+            year = int(year_str)
+            print("Valid year")
+            return year
+        else:
+            print("Invalid year. Please enter a 4-digit year.")
 
 #Categorizing purchases
 def purchase_category():
-    categories = {1:"Utilities", 2: "Rent", 3:"Leisure"}
+    categories = {1:"Rent & Utilities", 2: "Groceries", 3:"Transportation", 4: "Leisure"}
     while True:
         try:
             print("Please select a purchase category by entering the corresponding number:")
