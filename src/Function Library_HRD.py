@@ -90,29 +90,24 @@ print(f"\n You have spent a total of ${total_category_spending:.2f} this month."
 
 
 #What month's budget are you trying to input? For logging purposes
-def what_month():
-    while True:
-        try:
-            month = int(input("What month is it? Format in MM format \n"))
-            if 1 <= month <= 12:
-                print("Valid month.")
-                break
-            else:
-                print("Invalid month. Please enter a number between 1 and 12.")
-        except ValueError:
-            print("Invalid input. Please enter a number.")
+def validate_month(month):
+  months = ("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")
+  if month not in months:
+    return False
+  else:
+    return True
 #Year input for logging purposes. 
 #A json file could be opened up for every new year logged, and the month should be used for each new row. 
 #It would likely be good to put most information into a json and then maybe put it into a table for overall spending in each category
-def what_year():
-    while True:
-        year_str = input("What year is it? Format in YYYY format. \n")
-        if year_str.isdigit() and len(year_str) == 4:
-            year = int(year_str)
-            print("Valid year")
-            return year
-        else:
-            print("Invalid year. Please enter a 4-digit year.")
+def validate_year(year):
+    if isinstance(year, str) and year.isdigit() and len(year) == 4:
+        print("Valid year")
+        return int(year)
+    else:
+        print("Invalid year. Please enter a 4-digit year.")
+        return None
+#example. store the year in a variable so it can be plugged in for creating a json file
+year = validate_year(2025)
 
 #Categorizing purchases
 def purchase_category():
@@ -146,7 +141,6 @@ def what_state():
     #
     if state not in states:
         print ("Invalid state. ")
-    #then push it to the text file
     else:
         print ("Valid state.")
 
