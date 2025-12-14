@@ -1,1 +1,151 @@
-Test
+# INST126 Project 4 – Budgeting Application
+
+## Project Overview
+
+This project is a budgeting application developed for Project 04. 
+The goal of the project is to demonstrate a complete, working system that integrates object-oriented design, data persistence, 
+file input/output, error handling, and multiple levels of testing.
+
+This Project was developed by: Connor Lehfeldt, Kurt Willis, Abbas Mehdi
+
+The application allows users to:
+
+* Manage accounts, budget categories, and transactions
+* Apply income, expense, and transfer transactions
+* Save and load program state between runs
+* Import transaction data from a CSV file
+* Export budgeting reports to CSV files
+* Verify correctness through unit, integration, and system tests
+
+---
+
+## Features
+
+* **Object-Oriented Design**: Uses classes for Budget, Account, BudgetCategory, and Transaction types
+* **Persistence**: Saves and loads application state using JSON
+* **Import**: Reads transactions from a standardized CSV format
+* **Export**: Generates CSV reports for categories, accounts, and transactions
+* **Error Handling**: Gracefully handles missing files, corrupted data, and invalid input
+* **Testing**: Includes unit tests, integration tests, and system tests using `unittest`
+
+---
+
+## Requirements
+
+* Python **3.10 or newer**
+* No external libraries required (standard library only)
+
+---
+
+## How to Run the Program
+
+Navigate to the folder containing `project4_single_file.py` and run:
+
+```bash
+python project4_single_file.py
+```
+
+This will:
+
+* Load saved data (if it exists)
+* Run a demo budgeting workflow
+* Save the updated state to `data/budget_state.json`
+* Export reports to `data/exports/`
+
+---
+
+## How to Run Tests
+
+The project includes a full automated test suite.
+
+Run all tests with:
+
+```bash
+python project4_single_file.py --test
+```
+
+This executes:
+
+* Unit tests (individual classes and methods)
+* Integration tests (multiple components working together)
+* System tests (end-to-end workflows)
+
+---
+
+## Importing Data (CSV)
+
+To test the import feature:
+
+1. Create a file named `sample_import.csv` in the same folder as the Python file
+2. Use the following format:
+
+```csv
+type, amount, description, date, account_name, category_name, from_account, to_account
+income, 2500.00, Paycheck, 2025-12-01, Checking,,,
+expense, 1200.00, Rent, 2025-12-02, Checking, Housing,,
+transfer, 300.00, Move to savings, 2025-12-05,,, Checking,Savings
+```
+
+You can also copy and paste this into a notebook CSV file:
+
+type,amount,description,date,account_name,category_name,from_account,to_account
+income,2500.00,Paycheck,2025-12-01,Checking,,,
+expense,1200.00,Rent,2025-12-02,Checking,Housing,,
+expense,85.34,Groceries,2025-12-03,Checking,Food,,
+expense,22.50,Coffee,2025-12-03,Checking,Food,,
+expense,60.00,Movies,2025-12-04,Checking,Fun,,
+transfer,300.00,Move to savings,2025-12-05,,,Checking,Savings
+
+3. Importing can be demonstrated during the presentation or enabled in the demo workflow.
+
+---
+
+## Exported Reports
+
+After running the program, the following reports are generated:
+
+* `category_report.csv`: Planned vs spent amounts per category
+* `account_report.csv`: Current balances for each account
+* `transactions_export.csv`: Full transaction history
+
+All reports are saved in:
+
+```
+data/exports/
+```
+
+---
+
+## Testing Strategy
+
+* **Unit Tests**: Validate individual classes and methods
+* **Integration Tests**: Verify interactions between accounts, categories, transactions, and persistence
+* **System Tests**: Validate full workflows including import, export, save, and load
+
+Testing is implemented using Python’s built-in `unittest` framework.
+
+---
+
+## Limitations and Future Improvements
+
+* No graphical user interface (CLI/demo only)
+* No user authentication or multi-user support
+* Future versions could include:
+
+  * Interactive menus
+  * Visualization of spending trends
+  * Support for additional import/export formats
+
+---
+
+## AI Usage Statement
+
+AI tools were used as a development aid to assist with debugging, refactoring, and documentation. 
+All code was reviewed, tested, and validated by the team to ensure correctness and understanding.
+
+---
+
+## Conclusion
+
+This project demonstrates a complete, testable, and well-structured budgeting system that fulfills all Project 4 requirements, 
+including persistence, import/export functionality, and comprehensive testing.
