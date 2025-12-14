@@ -19,3 +19,7 @@ Contribution guidelines for team members:
 -Each member should communicate if they cannot do something or if they need help with something, whether due to limitations of their own coding capabilities, or due to technical difficulties that prevent them from coding and pushing to the repository.
 -If members use AI, they should use the proper documentation procedures for usage of AI for whatever specific purpose they used it for, as outlined by the professor.
 -Each member should contribute their part in a timely fashion.  
+
+Project 03:
+
+This project uses inheritance to model financial behavior. The Transaction class is implemented as an abstract base class (ABC) that defines shared attributes and required behavior for all transactions. Concrete subclasses—ExpenseTransaction, IncomeTransaction, and SavingsTransaction—inherit from Transaction and override abstract methods to apply different balance effects, demonstrating polymorphism. Additionally, an account hierarchy is used where specialized account types, such as CheckingAccount and CreditAccount, inherit from the base Account class, allowing shared functionality while supporting account-specific rules. Composition is also used throughout the system, as accounts contain transactions and budgeting periods that summarize account data.
